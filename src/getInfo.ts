@@ -3,7 +3,7 @@ import { decode } from 'html-entities'
 import { type HTMLElement, parse } from 'node-html-parser'
 import { request, FormData, type Dispatcher } from 'undici'
 
-import { applyRegex, applyVersionOption } from '@/utils'
+import { applyRegex, applyVersionOption } from './utils/index'
 import REGEX_GET_VERSION from './REGEX_GET_VERSION'
 import PARSE_OPTIONS from './PARSE_OPTIONS'
 
