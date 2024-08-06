@@ -18,6 +18,8 @@ parserOptions:
   project: tsconfig.json
 plugins:
   - '@typescript-eslint'
+ignorePatterns:
+  - start.ts
 
 rules:
   #region eslint
