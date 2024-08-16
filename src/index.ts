@@ -1,5 +1,9 @@
 import getInfo from './getInfo'
 
+export { applyRegex } from './utils/index'
+
+export { default as getDownloadLink } from './getDownloadLink'
+
 const MAX_CONCURRENT_REQUESTS = 5
 
 export const getInfos = async (appConfigs: AppConfigs) => {

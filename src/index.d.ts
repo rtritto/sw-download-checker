@@ -60,4 +60,6 @@ type GithubTags = GithubTag[]
 
 declare module 'sw-download-checker' {
   export function getInfo(obj: NestedConfig, appName: string): Promise<Info>
+  export function applyRegex(targetString: string, options: { version: string }): string
+  export function getDownloadLink(info: Info): Promise<string>
 }
