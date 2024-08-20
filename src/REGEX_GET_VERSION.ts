@@ -1,4 +1,4 @@
-// regex per estrarre solo numeri o numeri separati da punti
-const REGEX_GET_VERSION = /(?:\d+\.)*\d+/
+// regex to extract semver numbers (dot separated numbers)
+const REGEX_GET_VERSION = /(?:\d+\.)+\d+/
 
 export default REGEX_GET_VERSION
