@@ -1,6 +1,6 @@
 import getInfo from './getInfo'
 
-export { applyRegex } from './utils/index'
+export { applyRegex, VERSION_SEPARATOR } from './utils/index'
 
 export { default as getDownloadLink } from './getDownloadLink'
 
