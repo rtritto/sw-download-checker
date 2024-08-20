@@ -28,7 +28,7 @@ const getFilteredVersion = (currentVersion: string, newestVersions: string[]): s
   return filteredVersion
 }
 
-const getInfo = async (obj: NestedConfig, appName: string): Promise<Info> => {
+const getInfo = async (obj: NestedConfig, appName: string): Promise<Info | undefined> => {
   const { website, version } = obj
 
   // if (!website) {
@@ -48,6 +48,9 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info> => {
       const title = html.querySelector('title')
       const title_raw = title?.rawText
       titleVersion = title_raw?.match(REGEX_SEMVER)?.at(0)
+      if (titleVersion === version) {
+        return
+      }
       // if (imageUrl === undefined) {
       //   imageUrl = html.querySelector('meta[property="og:image"]')!.getAttribute('content')
       // }
@@ -78,6 +81,9 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info> => {
       const downloadInfoAHref = downloadInfoA!.rawAttrs
       const { v } = querystring.parse(decode(downloadInfoAHref)) as { v: string } // convert "&amp" to "&"
       titleVersion = v
+      if (titleVersion === version) {
+        return
+      }
       // if (imageUrl === undefined) {
       //   imageUrl = html.querySelector('img.main-app-logo')!.getAttribute('src')
       // }
@@ -98,6 +104,9 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info> => {
       const rawVersion = strongCN!.rawText
       const { versionOptions } = obj
       titleVersion = applyVersionOption(rawVersion, versionOptions?.title) as string
+      if (titleVersion === version) {
+        return
+      }
       // if (imageUrl === undefined) {
       //   imageUrl = html.querySelector('img.fl')!.getAttribute('src')
       // }
@@ -177,6 +186,9 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info> => {
         throw new Error('Missing tag_name')
       }
       titleVersion = data.tag_name.match(REGEX_SEMVER)!.at(0)!
+      if (titleVersion === version) {
+        return
+      }
       fileUrl = 'download' in obj
         ? applyRegex(obj.download!, { version: titleVersion })
         : data.assets[obj.assetNumber!].browser_download_url
@@ -194,6 +206,9 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info> => {
       // clean version
       const newestVersions = [...title.matchAll(/[\d.]+/g)].flat()
       titleVersion = getFilteredVersion(version, newestVersions)
+      if (titleVersion === version) {
+        return
+      }
       const { download } = obj
       if (download) {
         fileUrl = applyRegex(download, { version: titleVersion })
@@ -205,7 +220,6 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info> => {
   return {
     appName,
     website,
-    isVersionUpdated: titleVersion === version,
     currentVersion: version,
     newVersion: titleVersion,
     imageUrl,

@@ -16,8 +16,7 @@ export const getInfos = async (appConfigs: AppConfigs) => {
       chunk.map(async (appName: string) => {
         try {
           const info = await getInfo(appConfigs[appName], appName)
-          const { isVersionUpdated } = info
-          if (isVersionUpdated === false) {
+          if (info !== undefined) {
             results[appName] = info
           }
         } catch (error) {

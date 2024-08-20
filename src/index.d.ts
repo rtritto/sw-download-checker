@@ -35,7 +35,6 @@ type AppConfigs = {
 type Info = {
   appName: string
   website: string
-  isVersionUpdated?: boolean
   currentVersion?: string
   newVersion?: string
   imageUrl?: string
