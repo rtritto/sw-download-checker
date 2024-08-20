@@ -4,7 +4,7 @@ import { type HTMLElement, parse } from 'node-html-parser'
 import { request, FormData, type Dispatcher } from 'undici'
 
 import { applyRegex, applyVersionOption } from './utils/index'
-import REGEX_GET_VERSION from './REGEX_GET_VERSION'
+import REGEX_SEMVER from './REGEX_SEMVER'
 import PARSE_OPTIONS from './PARSE_OPTIONS'
 
 const getHTML = async (url: string): Promise<HTMLElement> => {
@@ -47,7 +47,7 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info> => {
       const html = await getHTML(url!)
       const title = html.querySelector('title')
       const title_raw = title?.rawText
-      titleVersion = title_raw?.match(REGEX_GET_VERSION)?.at(0)
+      titleVersion = title_raw?.match(REGEX_SEMVER)?.at(0)
       // if (imageUrl === undefined) {
       //   imageUrl = html.querySelector('meta[property="og:image"]')!.getAttribute('content')
       // }
@@ -176,7 +176,7 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info> => {
       if (!data.tag_name) {
         throw new Error('Missing tag_name')
       }
-      titleVersion = data.tag_name.match(REGEX_GET_VERSION)!.at(0)!
+      titleVersion = data.tag_name.match(REGEX_SEMVER)!.at(0)!
       fileUrl = 'download' in obj
         ? applyRegex(obj.download!, { version: titleVersion })
         : data.assets[obj.assetNumber!].browser_download_url
