@@ -36,7 +36,7 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info | undef
   //   return {}
   // }
 
-  let titleVersion: string | undefined
+  let newVersion: string | undefined
   // eslint-disable-next-line prefer-const
   let { imageUrl } = obj
   let fileUrl: string | undefined
@@ -47,8 +47,8 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info | undef
       const html = await getHTML(url!)
       const title = html.querySelector('title')
       const title_raw = title?.rawText
-      titleVersion = title_raw?.match(REGEX_SEMVER)?.at(0)
-      if (titleVersion === version) {
+      newVersion = title_raw?.match(REGEX_SEMVER)?.at(0)
+      if (newVersion === version) {
         return
       }
       // if (imageUrl === undefined) {
@@ -80,8 +80,8 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info | undef
       const downloadInfoA = downloadInfoAs!.find((a) => a.childNodes[0].rawText === 'Antivirus Scan')
       const downloadInfoAHref = downloadInfoA!.rawAttrs
       const { v } = querystring.parse(decode(downloadInfoAHref)) as { v: string } // convert "&amp" to "&"
-      titleVersion = v
-      if (titleVersion === version) {
+      newVersion = v
+      if (newVersion === version) {
         return
       }
       // if (imageUrl === undefined) {
@@ -89,7 +89,7 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info | undef
       // }
       const { download } = obj
       if (download) {
-        fileUrl = applyRegex(download, { version: titleVersion })
+        fileUrl = applyRegex(download, { version: newVersion })
       } else {
         throw new Error('PortableApps: missing download')
       }
@@ -103,8 +103,8 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info | undef
       const strongCN = strong!.childNodes.at(0)
       const rawVersion = strongCN!.rawText
       const { versionOptions } = obj
-      titleVersion = applyVersionOption(rawVersion, versionOptions?.title) as string
-      if (titleVersion === version) {
+      newVersion = applyVersionOption(rawVersion, versionOptions?.title) as string
+      if (newVersion === version) {
         return
       }
       // if (imageUrl === undefined) {
@@ -185,12 +185,12 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info | undef
       if (!data.tag_name) {
         throw new Error('Missing tag_name')
       }
-      titleVersion = data.tag_name.match(REGEX_SEMVER)!.at(0)!
-      if (titleVersion === version) {
+      newVersion = data.tag_name.match(REGEX_SEMVER)!.at(0)!
+      if (newVersion === version) {
         return
       }
       fileUrl = 'download' in obj
-        ? applyRegex(obj.download!, { version: titleVersion })
+        ? applyRegex(obj.download!, { version: newVersion })
         : data.assets[obj.assetNumber!].browser_download_url
       break
     }
@@ -205,13 +205,13 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info | undef
       const title = html.querySelector('title')!.rawText
       // clean version
       const newestVersions = [...title.matchAll(/[\d.]+/g)].flat()
-      titleVersion = getFilteredVersion(version, newestVersions)
-      if (titleVersion === version) {
+      newVersion = getFilteredVersion(version, newestVersions)
+      if (newVersion === version) {
         return
       }
       const { download } = obj
       if (download) {
-        fileUrl = applyRegex(download, { version: titleVersion })
+        fileUrl = applyRegex(download, { version: newVersion })
       } else {
         throw new Error('default: missing download')
       }
@@ -221,7 +221,7 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info | undef
     appName,
     website,
     currentVersion: version,
-    newVersion: titleVersion,
+    newVersion,
     imageUrl,
     fileUrl
   }
