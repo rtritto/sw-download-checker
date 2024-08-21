@@ -1,6 +1,8 @@
 type ValueOf<T> = T[keyof T]
 
-type Category = 'SO' | 'Downloader' | 'Media' | 'Office' | 'Tools' | 'Emulator' | 'DB'
+type Category = 'SO' | 'Downloader' | 'Media' | 'Office' | 'Tools' | 'Browser' | 'Emulator' | 'Dev' | 'Info' | 'VPN'
+
+type Website = 'FileCatchers' | 'FCPortables' | 'PortableApps' | 'Softpedia' | 'GitHub' | 'VideoHelp'
 
 type VersionOptions = {
   title?: string
@@ -23,8 +25,8 @@ type NestedConfig = {
   tagNumber?: number
   version: string
   versionOptions?: VersionOptions
-  website: string
-  websiteTmp?: string
+  website: Website
+  websiteTmp?: Website
   comment?: string
 }
 
@@ -34,9 +36,9 @@ type AppConfigs = {
 
 type Info = {
   appName: string
-  website: string
-  currentVersion?: string
-  newVersion?: string
+  website: Website
+  currentVersion: string
+  newVersion: string
   imageUrl?: string
   fileUrl?: string
 }
