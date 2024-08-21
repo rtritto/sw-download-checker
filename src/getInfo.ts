@@ -47,7 +47,7 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info | undef
       const html = await getHTML(url!)
       const title = html.querySelector('title')
       const title_raw = title?.rawText
-      newVersion = title_raw?.match(REGEX_SEMVER)?.at(0)
+      newVersion = title_raw?.match(REGEX_SEMVER)?.at(0)!
       if (newVersion === version) {
         return
       }
@@ -103,7 +103,7 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info | undef
       const strongCN = strong!.childNodes.at(0)
       const rawVersion = strongCN!.rawText
       const { versionOptions } = obj
-      newVersion = applyVersionOption(rawVersion, versionOptions?.title) as string
+      newVersion = applyVersionOption(rawVersion, versionOptions?.title)! as string
       if (newVersion === version) {
         return
       }
@@ -222,8 +222,8 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info | undef
     website,
     currentVersion: version,
     newVersion,
-    imageUrl,
-    fileUrl
+    ...imageUrl && { imageUrl },
+    ...fileUrl && { fileUrl }
   }
 }
 
