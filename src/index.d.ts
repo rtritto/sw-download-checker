@@ -36,6 +36,7 @@ type AppConfigs = {
 
 type Info = {
   appName: string
+  category?: string
   website: Website
   currentVersion: string
   newVersion: string

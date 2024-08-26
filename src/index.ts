@@ -6,7 +6,7 @@ export { default as getDownloadLink } from './getDownloadLink'
 
 const MAX_CONCURRENT_REQUESTS = 5
 
-export const getInfos = async (appConfigs: AppConfigs) => {
+export const getInfos = async (appConfigs: AppConfigs, category?: Category) => {
   const results: AppInfos = {}
   const promiseErrors: { [appName: string]: unknown } = {}
   const appNames = Object.keys(appConfigs)
@@ -15,7 +15,7 @@ export const getInfos = async (appConfigs: AppConfigs) => {
     await Promise.allSettled(
       chunk.map(async (appName: string) => {
         try {
-          const info = await getInfo(appConfigs[appName], appName)
+          const info = await getInfo(appConfigs[appName], appName, category)
           if (info !== undefined) {
             results[appName] = info
           }

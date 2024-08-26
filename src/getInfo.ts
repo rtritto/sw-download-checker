@@ -28,7 +28,7 @@ const getFilteredVersion = (currentVersion: string, newestVersions: string[]): s
   return filteredVersion
 }
 
-const getInfo = async (obj: NestedConfig, appName: string): Promise<Info | undefined> => {
+const getInfo = async (obj: NestedConfig, appName: string, category?: Category): Promise<Info | undefined> => {
   const { website, version } = obj
 
   // if (!website) {
@@ -219,6 +219,7 @@ const getInfo = async (obj: NestedConfig, appName: string): Promise<Info | undef
   }
   return {
     appName,
+    ...category && { category },
     website,
     currentVersion: version,
     newVersion,
