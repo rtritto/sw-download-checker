@@ -46,8 +46,8 @@ const getInfo = async (obj: NestedConfig, appName: string, category?: Category):
       const { url } = obj
       const html = await getHTML(url!)
       const title = html.querySelector('title')
-      const title_raw = title?.rawText
-      newVersion = title_raw?.match(REGEX_SEMVER)?.at(0)!
+      const title_raw = title!.rawText
+      newVersion = title_raw.match(REGEX_SEMVER)!.at(0)!
       if (newVersion === version) {
         return
       }
