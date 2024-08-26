@@ -5,7 +5,7 @@ export const VERSION_SEPARATOR = '<VERSION>'
  * @param options
  */
 const applyRegex = (targetString: string, { version }: { version: string }): string => {
-  return targetString.replaceAll(VERSION_SEPARATOR, version)
+  return targetString.replace(VERSION_SEPARATOR, version)
 }
 
 export default applyRegex
