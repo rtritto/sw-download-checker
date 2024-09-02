@@ -413,12 +413,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^22.5.0":
-  version: 22.5.0
-  resolution: "@types/node@npm:22.5.0"
+"@types/node@npm:*, @types/node@npm:^22.5.2":
+  version: 22.5.2
+  resolution: "@types/node@npm:22.5.2"
   dependencies:
     undici-types: "npm:~6.19.2"
-  checksum: 10c0/45aa75c5e71645fac42dced4eff7f197c3fdfff6e8a9fdacd0eb2e748ff21ee70ffb73982f068a58e8d73b2c088a63613142c125236cdcf3c072ea97eada1559
+  checksum: 10c0/624a7fd76229eacc6c158eb3b9afd55b811d7f01976c5f92c630d5b9d47047cc218928c343988484a165ac400e5eb6fe70ea300fc7242deeb0e920c7724290f6
   languageName: node
   linkType: hard
 
@@ -1737,9 +1737,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-solid@npm:^0.14.2":
-  version: 0.14.2
-  resolution: "eslint-plugin-solid@npm:0.14.2"
+"eslint-plugin-solid@npm:^0.14.3":
+  version: 0.14.3
+  resolution: "eslint-plugin-solid@npm:0.14.3"
   dependencies:
     "@typescript-eslint/utils": "npm:^7.13.1 || ^8.0.0"
     estraverse: "npm:^5.3.0"
@@ -1749,7 +1749,7 @@ __metadata:
     style-to-object: "npm:^1.0.6"
   peerDependencies:
     eslint: ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
-  checksum: 10c0/38852a87beabc438feae7294c1687438fc52b2efd99261109868baa7c4f30196b4e677d95641b9b415a271914c9874b3f22b1b1eb931e5a82d96c6a0182afe32
+  checksum: 10c0/7f496164c6ef24f799a91a9ce02645e6b58609140ef0b424c841df0999a09da6fa53e36e645d9031ea94da716ac512cc016674f71056ff3d2ad52cef3726384e
   languageName: node
   linkType: hard
 
@@ -3964,7 +3964,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "sw-download-checker@workspace:."
   dependencies:
-    "@types/node": "npm:^22.5.0"
+    "@types/node": "npm:^22.5.2"
     "@typescript-eslint/eslint-plugin": "npm:^8.3.0"
     "@typescript-eslint/parser": "npm:^8.3.0"
     "@yarnpkg/sdks": "npm:^3.2.0"
@@ -3972,7 +3972,7 @@ __metadata:
     eslint-import-resolver-node: "npm:^0.3.9"
     eslint-import-resolver-typescript: "npm:^3.6.3"
     eslint-plugin-import: "npm:^2.29.1"
-    eslint-plugin-solid: "npm:^0.14.2"
+    eslint-plugin-solid: "npm:^0.14.3"
     eslint-plugin-unicorn: "npm:^55.0.0"
     html-entities: "npm:^2.5.2"
     node-html-parser: "npm:^6.1.13"
