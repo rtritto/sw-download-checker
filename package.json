@@ -14,7 +14,7 @@
   "dependencies": {
     "html-entities": "^2.5.2",
     "node-html-parser": "^6.1.13",
-    "undici": "^6.21.0"
+    "undici": "^7.1.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.1",
