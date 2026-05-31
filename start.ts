@@ -1,17 +1,24 @@
-import { getInfos } from './src/index'
+import { getInfos } from './src/index.ts'
 
 const appConfigs = {
-  'Tor Browser <VERSION> Portable': {
-    url: 'https://www.softpedia.com/get/Security/Security-Related/Tor-Browser.shtml',
-    imageUrl: 'https://windows-cdn.softpedia.com/screenshots/ico/Tor-Browser.png',
-    download: 'https://dist.torproject.org/torbrowser/<VERSION>/tor-browser-windows-x86_64-portable-<VERSION>.exe',
-    version: '13.5.1',
-    versionOptions: {
-      download: '"<VERSION>".split(" / ").at(0)',
-      title: '"<VERSION>".split(" / ").at(0)'
-    },
-    website: 'Softpedia'
+  'CCleaner <VERSION> Portable': {
+    url: 'https://www.fcportables.com/ccleaner-portable',
+    urlTmp: 'https://www.softpedia.com/get/Security/Secure-cleaning/CCleaner.shtml',
+    imageUrl: 'https://windows-cdn.softpedia.com/screenshots/ico/CCleaner.png',
+    version: '6.19.10858',
+    website: 'FCPortables'
   }
+  // 'Tor Browser <VERSION> Portable': {
+  //   url: 'https://www.softpedia.com/get/Security/Security-Related/Tor-Browser.shtml',
+  //   imageUrl: 'https://windows-cdn.softpedia.com/screenshots/ico/Tor-Browser.png',
+  //   download: 'https://dist.torproject.org/torbrowser/<VERSION>/tor-browser-windows-x86_64-portable-<VERSION>.exe',
+  //   version: '13.5.1',
+  //   versionOptions: {
+  //     download: '"<VERSION>".split(" / ").at(0)',
+  //     title: '"<VERSION>".split(" / ").at(0)'
+  //   },
+  //   website: 'Softpedia'
+  // }
   // 'VirtualBox <VERSION> Portable': {
   //   url: 'https://www.filecatchers.com/virtualbox-portable',
   //   imageUrl: 'https://windows-cdn.softpedia.com/screenshots/ico/VirtualBox.png',

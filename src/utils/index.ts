@@ -1,2 +1,2 @@
-export { default as applyVersionOption } from './applyVersionOption'
-export { default as applyRegex, VERSION_SEPARATOR } from './applyRegex'
+export { default as applyVersionOption } from './applyVersionOption.ts'
+export { default as applyRegex, VERSION_SEPARATOR } from './applyRegex.ts'

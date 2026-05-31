@@ -3,9 +3,9 @@ import { decode } from 'html-entities'
 import { type HTMLElement, parse } from 'node-html-parser'
 import { request, FormData, type Dispatcher } from 'undici'
 
-import { applyRegex, applyVersionOption } from './utils/index'
-import REGEX_SEMVER from './REGEX_SEMVER'
-import PARSE_OPTIONS from './PARSE_OPTIONS'
+import { applyRegex, applyVersionOption } from './utils/index.ts'
+import REGEX_SEMVER from './REGEX_SEMVER.ts'
+import PARSE_OPTIONS from './PARSE_OPTIONS.ts'
 
 const getHTML = async (url: string): Promise<HTMLElement> => {
   const data = await request(url, {

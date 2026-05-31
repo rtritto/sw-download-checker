@@ -1,4 +1,4 @@
-import applyRegex from './applyRegex'
+import applyRegex from './applyRegex.ts'
 
 /** Transform " Rev 2" -> "_Rev_2" */
 const applyVersionOption = (version: string, versionOption?: ValueOf<VersionOptions>): string | Error => {

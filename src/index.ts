@@ -1,8 +1,8 @@
-import getInfo from './getInfo'
+import getInfo from './getInfo.ts'
 
-export { applyRegex, VERSION_SEPARATOR } from './utils/index'
+export { applyRegex, VERSION_SEPARATOR } from './utils/index.ts'
 
-export { default as getDownloadLink } from './getDownloadLink'
+export { default as getDownloadLink } from './getDownloadLink.ts'
 
 const MAX_CONCURRENT_REQUESTS = 5
 
