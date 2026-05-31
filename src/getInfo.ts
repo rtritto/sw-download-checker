@@ -63,7 +63,7 @@ const getInfo = async (obj: NestedConfig, appName: string, category?: Category):
         fileUrl = html
           .querySelector('#content')!
           .querySelector('p:last-of-type')!
-          .querySelector('a')!
+          .querySelector('a')!  // get first <a>
           .getAttribute('href')
       } catch (error) {
         if (error instanceof TypeError) {
