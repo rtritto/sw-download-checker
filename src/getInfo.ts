@@ -1,11 +1,15 @@
 import querystring from 'node:querystring'
 import { decode } from 'html-entities'
 import { type HTMLElement, parse } from 'node-html-parser'
-import { request, FormData, type Dispatcher } from 'undici'
+import { Agent, interceptors, request, FormData, type Dispatcher } from 'undici'
 
 import { applyRegex, applyVersionOption } from './utils/index.ts'
 import REGEX_SEMVER from './REGEX_SEMVER.ts'
 import PARSE_OPTIONS from './PARSE_OPTIONS.ts'
+
+const agent = new Agent().compose(
+  interceptors.redirect({ maxRedirections: 1 })
+)
 
 const getHTML = async (url: string): Promise<HTMLElement> => {
   const data = await request(url, {
@@ -15,7 +19,7 @@ const getHTML = async (url: string): Promise<HTMLElement> => {
       'Content-Type': 'text/plain; charset=UTF-8',
       'User-Agent': `UA/${Date.now().toString()}`
     },
-    maxRedirections: 1
+    dispatcher: agent
   }).then((res) => res.body.text())
   return parse(data, PARSE_OPTIONS)
 }
