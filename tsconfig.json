@@ -2,7 +2,6 @@
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
@@ -16,8 +15,5 @@
     "types": [
       "./src/index.d.ts"
     ]
-  },
-  "include": [
-    "src/**/*"
-  ]
+  }
 }
