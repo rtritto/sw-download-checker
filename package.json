@@ -9,11 +9,18 @@
   "scripts": {
     "start": "node ./start.ts",
     "lint": "eslint src/**/*.{ts,tsx} *.ts",
-    "od": "yarn outdated"
+    "od": "yarn outdated",
+    "install-chrome": "puppeteer browsers install chrome"
   },
   "dependencies": {
+    "@zorilla/puppeteer-extra": "patch:@zorilla/puppeteer-extra@npm%3A1.0.2#~/.yarn/patches/@zorilla-puppeteer-extra-npm-1.0.2-c6f5461b86.patch",
+    "@zorilla/puppeteer-extra-plugin-adblocker": "^1.0.3",
+    "@zorilla/puppeteer-extra-plugin-stealth": "^1.0.4",
+    "@zorilla/puppeteer-extra-plugin-user-data-dir": "^1.0.2",
+    "@zorilla/puppeteer-extra-plugin-user-preferences": "^1.0.2",
     "html-entities": "^2.6.0",
     "node-html-parser": "^7.1.0",
+    "puppeteer": "^25.1.0",
     "undici": "^8.3.0"
   },
   "devDependencies": {

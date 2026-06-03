@@ -1,0 +1,16 @@
+diff --git a/dist/dependency-resolution.js b/dist/dependency-resolution.js
+index b61b7befc24345a2be984ec751e8f56a038eb2ab..e8a9c86ca26c5f97df5a42c6399acab0b798a0ee 100644
+--- a/dist/dependency-resolution.js
++++ b/dist/dependency-resolution.js
+@@ -27,7 +27,10 @@ export function extractDependencyPackageName(name) {
+ }
+ export function resolveDependencyImportPath(name) {
+     const resolvedName = resolveDependencyPackageName(name);
+-    if (!resolvedName.startsWith(`${DEFAULT_PLUGIN_SCOPE}/${PLUGIN_PREFIX}`)) {
++    if (
++        !resolvedName.startsWith(`${DEFAULT_PLUGIN_SCOPE}/${PLUGIN_PREFIX}`)
++        || process.versions.pnp
++    ) {
+         return resolvedName;
+     }
+     const withoutScope = resolvedName.replace(`${DEFAULT_PLUGIN_SCOPE}/`, '');
